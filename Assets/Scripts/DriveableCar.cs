@@ -34,22 +34,29 @@ public class DriveableCar : MonoBehaviour
     private void Update()
     {
         Drive();
-        Stearing();
     }
-    private void Drive()
+    public void Drive()
     {
-        Vector3 rawMove = moveAction.ReadValue<Vector3>() * (accelerationSpeed * 10);
+        Vector3 localVelocity = transform.InverseTransformDirection(rigidBody.velocity);
+        Vector2 velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.z);
 
-        Vector3 movementVector = transform.position * rigidBody.position.x + transform.forward * rawMove.z * Time.deltaTime;
-        movementVector.y = rigidBody.position.y;
-        rigidBody.velocity = movementVector;
-    }
-    private void Stearing()
-    {
-        Vector3 rawTurn = turnAction.ReadValue<Vector3>() * turnAngle;
-        Vector3 rotation = Vector3.up * rawTurn.x;
-        Debug.Log(rawTurn);
-        transform.localEulerAngles += rotation * Time.deltaTime;
+        velocity = velocity.normalized * maxSpeed;
+        localVelocity = localVelocity.normalized * maxSpeed;
+
+        float speedPercentage = velocity.magnitude / maxSpeed;
+        Vector3 rawTurn = turnAction.ReadValue<Vector3>();
+        Vector3 rotation = Vector3.up * rawTurn.x * speedPercentage * Time.deltaTime;
+
+        if (localVelocity.z > 0)
+        {
+            transform.localEulerAngles += rotation;
+        }
+        else if (localVelocity.z < 0)
+        {
+            transform.localEulerAngles -= rotation;
+        }
+        Vector3 rawMove = moveAction.ReadValue<Vector3>() * accelerationSpeed;
+        rigidBody.AddForce(transform.rotation * Vector3.forward * rawMove.z);
     }
     private void OnEnable()
     {
