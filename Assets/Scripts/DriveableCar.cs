@@ -45,7 +45,7 @@ public class DriveableCar : MonoBehaviour
 
         float speedPercentage = velocity.magnitude / maxSpeed;
         Vector3 rawTurn = turnAction.ReadValue<Vector3>();
-        Vector3 rotation = Vector3.up * rawTurn.x * speedPercentage * Time.deltaTime;
+        Vector3 rotation = Vector3.up * turnAngle * rawTurn.x * speedPercentage * Time.deltaTime;
 
         if (localVelocity.z > 0)
         {

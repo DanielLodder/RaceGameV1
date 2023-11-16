@@ -410,8 +410,8 @@ Transform:
   m_GameObject: {fileID: 1179697175}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.6827374, y: -1.12, z: 4.7921076}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -4.2026, y: -1.12, z: 4.7921076}
+  m_LocalScale: {x: 1, y: 1, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 447277087}
@@ -430,12 +430,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 1179697181}
-  maxSpeed: 100
-  breakForce: 100
-  decelerationSpeed: 100
-  accelerationSpeed: 100
-  turnAngle: 100
+  maxSpeed: 5
+  breakForce: 1
+  decelerationSpeed: 1
+  accelerationSpeed: 5
+  turnAngle: 50
   traction: 0
+  actions: {fileID: -944628639613478452, guid: 158ed9a3bfcd9c04d8b8c83531e6faa8, type: 3}
 --- !u!54 &1179697181
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -446,7 +447,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -457,11 +458,11 @@ Rigidbody:
     serializedVersion: 2
     m_Bits: 0
   m_ImplicitCom: 1
-  m_ImplicitTensor: 1
+  m_ImplicitTensor: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 32
   m_CollisionDetection: 0
 --- !u!1 &1912352274
 GameObject:
