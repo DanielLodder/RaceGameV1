@@ -535,10 +535,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 1179697181}
-  maxSpeed: 5
+  maxSpeed: 35
   breakForce: 1
   decelerationSpeed: 1
-  accelerationSpeed: 5
+  accelerationSpeed: 35
   turnAngle: 50
   traction: 0
   actions: {fileID: -944628639613478452, guid: 158ed9a3bfcd9c04d8b8c83531e6faa8, type: 3}
