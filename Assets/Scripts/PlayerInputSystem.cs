@@ -62,6 +62,24 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ShiftUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""4b4d28a9-ad5a-47a5-aa9e-8c8166e86703"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShiftDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""95d866d7-8103-4510-bc34-1211cbf24457"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +170,28 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""Stearing"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6cd4bc7-98f4-4ff0-82e2-b4dcf97e5b80"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShiftUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bde1274c-02a0-4523-b145-a78219e82fc4"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShiftDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +204,8 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         m_Player_HandBrake = m_Player.FindAction("HandBrake", throwIfNotFound: true);
         m_Player_Looking = m_Player.FindAction("Looking", throwIfNotFound: true);
         m_Player_Stearing = m_Player.FindAction("Stearing", throwIfNotFound: true);
+        m_Player_ShiftUp = m_Player.FindAction("ShiftUp", throwIfNotFound: true);
+        m_Player_ShiftDown = m_Player.FindAction("ShiftDown", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -229,6 +271,8 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_HandBrake;
     private readonly InputAction m_Player_Looking;
     private readonly InputAction m_Player_Stearing;
+    private readonly InputAction m_Player_ShiftUp;
+    private readonly InputAction m_Player_ShiftDown;
     public struct PlayerActions
     {
         private @PlayerInputSystem m_Wrapper;
@@ -237,6 +281,8 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         public InputAction @HandBrake => m_Wrapper.m_Player_HandBrake;
         public InputAction @Looking => m_Wrapper.m_Player_Looking;
         public InputAction @Stearing => m_Wrapper.m_Player_Stearing;
+        public InputAction @ShiftUp => m_Wrapper.m_Player_ShiftUp;
+        public InputAction @ShiftDown => m_Wrapper.m_Player_ShiftDown;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +304,12 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
             @Stearing.started += instance.OnStearing;
             @Stearing.performed += instance.OnStearing;
             @Stearing.canceled += instance.OnStearing;
+            @ShiftUp.started += instance.OnShiftUp;
+            @ShiftUp.performed += instance.OnShiftUp;
+            @ShiftUp.canceled += instance.OnShiftUp;
+            @ShiftDown.started += instance.OnShiftDown;
+            @ShiftDown.performed += instance.OnShiftDown;
+            @ShiftDown.canceled += instance.OnShiftDown;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -274,6 +326,12 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
             @Stearing.started -= instance.OnStearing;
             @Stearing.performed -= instance.OnStearing;
             @Stearing.canceled -= instance.OnStearing;
+            @ShiftUp.started -= instance.OnShiftUp;
+            @ShiftUp.performed -= instance.OnShiftUp;
+            @ShiftUp.canceled -= instance.OnShiftUp;
+            @ShiftDown.started -= instance.OnShiftDown;
+            @ShiftDown.performed -= instance.OnShiftDown;
+            @ShiftDown.canceled -= instance.OnShiftDown;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -297,5 +355,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         void OnHandBrake(InputAction.CallbackContext context);
         void OnLooking(InputAction.CallbackContext context);
         void OnStearing(InputAction.CallbackContext context);
+        void OnShiftUp(InputAction.CallbackContext context);
+        void OnShiftDown(InputAction.CallbackContext context);
     }
 }

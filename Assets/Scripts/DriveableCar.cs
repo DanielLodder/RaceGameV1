@@ -20,20 +20,30 @@ public class DriveableCar : MonoBehaviour
     public InputActionAsset actions;
     private InputAction moveAction;
     private InputAction turnAction;
+    private InputAction shiftUp;
+    private InputAction shiftDown;
 
+    [Range(1,6)]
+    [SerializeField] private int gear;
+    private void Start()
+    {
+        gear = 1;
+    }
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         moveAction = actions.FindActionMap("Player").FindAction("Driving");
         turnAction = actions.FindActionMap("Player").FindAction("Stearing");
 
-
         PlayerInputSystem inputActions = new PlayerInputSystem();
         inputActions.Player.Enable();
+        shiftUp = inputActions.Player.ShiftUp;
+        shiftDown = inputActions.Player.ShiftDown;
     }
     private void Update()
     {
         Drive();
+        Gears();
     }
     public void Drive()
     {
@@ -60,12 +70,63 @@ public class DriveableCar : MonoBehaviour
         Debug.Log(rawMove);
         Debug.Log(rawTurn);
     }
+    private void Gears()
+    {
+        switch (gear)
+        {
+            case 1:
+                maxSpeed = 2;
+                break;
+            case 2:
+                maxSpeed = 4;
+                break;
+            case 3:
+                maxSpeed = 6;
+                break;
+            case 4:
+                maxSpeed = 8;
+                break;
+            case 5:
+                maxSpeed = 10;
+                break;
+            case 6:
+                maxSpeed = 12;
+                break;
+        }
+        if (gear == 0)
+        {
+            gear = 1;
+        }
+        if (gear == 7)
+        {
+            gear = 6;
+        }
+    }
+    private void ShiftUp(InputAction.CallbackContext context)
+    {
+        gear++;
+        Debug.Log("shifted Up");
+    }
+    private void ShiftDown(InputAction.CallbackContext context)
+    {
+        gear--;
+        Debug.Log("shifted Down");
+    }
     private void OnEnable()
     {
         actions.FindActionMap("Player").Enable();
+
+        shiftUp.Enable();
+        shiftUp.performed += ShiftUp;
+
+        shiftDown.Enable();
+        shiftDown.performed += ShiftDown;
     }
     private void OnDisable()
     {
         actions.FindActionMap("Player").Disable();
+
+        shiftUp.Disable();
+        shiftDown.Disable();
     }
 }
