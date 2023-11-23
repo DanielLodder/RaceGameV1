@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,11 +6,9 @@ public class DriveableCar : MonoBehaviour
     public Rigidbody rigidBody;
     private PlayerInput playerInput;
 
+    [SerializeField] private float currentSpeed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float turnAngle;
-    [Range(0, 1)]
-    [SerializeField] private float traction;
-
 
     PlayerInputSystem playerInputSystem;
     public InputActionAsset actions;
@@ -21,11 +17,9 @@ public class DriveableCar : MonoBehaviour
     private InputAction shiftUp;
     private InputAction shiftDown;
 
-    [Range(1,6)]
+    [Range(1, 6)]
     [SerializeField] private int gear;
 
-    [Range(1,6)]
-    [SerializeField] private int gear;
     private void Start()
     {
         gear = 1;
@@ -47,6 +41,8 @@ public class DriveableCar : MonoBehaviour
     {
         Drive();
         Gears();
+        currentSpeed =  Mathf.Round(rigidBody.velocity.magnitude);
+        CheckSpeed();
     }
 
     public void Drive()
@@ -58,7 +54,6 @@ public class DriveableCar : MonoBehaviour
 
         Vector3 rawTurn = turnAction.ReadValue<Vector3>();
         Vector3 rotation = Vector3.up * turnAngle * rawTurn.x * Time.deltaTime;
-
         if (localVelocity.z >= 0)
         {
             transform.localEulerAngles += rotation;
@@ -71,6 +66,8 @@ public class DriveableCar : MonoBehaviour
         Vector3 rawMove = moveAction.ReadValue<Vector3>() * maxSpeed;
         rigidBody.AddForce(transform.rotation * Vector3.forward * rawMove.z);
     }
+    private void Gears()
+    {
         switch (gear)
         {
             case 1:
@@ -101,7 +98,13 @@ public class DriveableCar : MonoBehaviour
             gear = 6;
         }
     }
-
+    private void CheckSpeed()
+    {
+        if (currentSpeed >= maxSpeed)
+        {
+            currentSpeed = maxSpeed;
+        }
+    }
     //the inputs for the gear shifts.
     private void ShiftUp(InputAction.CallbackContext context)
     {
