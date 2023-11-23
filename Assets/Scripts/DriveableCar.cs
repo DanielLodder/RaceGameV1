@@ -18,13 +18,18 @@ public class DriveableCar : MonoBehaviour
     public InputActionAsset actions;
     private InputAction moveAction;
     private InputAction turnAction;
+    private InputAction shiftUp;
+    private InputAction shiftDown;
 
-<<<<<<< Updated upstream
-=======
     [Range(1,6)]
     [SerializeField] private int gear;
 
->>>>>>> Stashed changes
+    [Range(1,6)]
+    [SerializeField] private int gear;
+    private void Start()
+    {
+        gear = 1;
+    }
     private void Awake()
     {
         gear = 1;
@@ -32,14 +37,16 @@ public class DriveableCar : MonoBehaviour
         moveAction = actions.FindActionMap("Player").FindAction("Driving");
         turnAction = actions.FindActionMap("Player").FindAction("Stearing");
 
-
         PlayerInputSystem inputActions = new PlayerInputSystem();
         inputActions.Player.Enable();
+        shiftUp = inputActions.Player.ShiftUp;
+        shiftDown = inputActions.Player.ShiftDown;
     }
 
     private void Update()
     {
         Drive();
+        Gears();
     }
 
     public void Drive()
@@ -64,12 +71,6 @@ public class DriveableCar : MonoBehaviour
         Vector3 rawMove = moveAction.ReadValue<Vector3>() * maxSpeed;
         rigidBody.AddForce(transform.rotation * Vector3.forward * rawMove.z);
     }
-<<<<<<< Updated upstream
-=======
-
-    private void Gears()
-    {
-        //sets the gear ratio of vehicle which changes your max speed.
         switch (gear)
         {
             case 1:
@@ -113,15 +114,23 @@ public class DriveableCar : MonoBehaviour
         Debug.Log("shifted Down");
     }
 
->>>>>>> Stashed changes
     private void OnEnable()
     {
         //enables all the actions so the system can detect when you pressed the button.
         actions.FindActionMap("Player").Enable();
+
+        shiftUp.Enable();
+        shiftUp.performed += ShiftUp;
+
+        shiftDown.Enable();
+        shiftDown.performed += ShiftDown;
     }
     private void OnDisable()
     {
         //disables all the actions so the system can detect when you stopped pressing the button.
         actions.FindActionMap("Player").Disable();
+
+        shiftUp.Disable();
+        shiftDown.Disable();
     }
 }
