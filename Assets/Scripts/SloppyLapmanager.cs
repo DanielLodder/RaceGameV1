@@ -8,6 +8,7 @@ public class SloppyLapmanager : MonoBehaviour
 
     [SerializeField] private int Maxlap = 3;
     [SerializeField] private int currentlap = 0;
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
