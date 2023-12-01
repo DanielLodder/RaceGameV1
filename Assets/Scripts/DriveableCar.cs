@@ -65,6 +65,7 @@ public class DriveableCar : MonoBehaviour
 
         Vector3 rawMove = moveAction.ReadValue<Vector3>() * maxSpeed;
         rigidBody.AddForce(transform.rotation * Vector3.forward * rawMove.z);
+        Debug.Log(rawMove);
     }
     private void Gears()
     {
