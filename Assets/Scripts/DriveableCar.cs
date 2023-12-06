@@ -50,10 +50,8 @@ public class DriveableCar : MonoBehaviour
         //adds velocity to the vehicle and allows it to turn.
         Vector3 localVelocity = transform.InverseTransformDirection(rigidBody.velocity);
 
-        localVelocity = localVelocity.normalized * maxSpeed;
-
-        Vector3 rawTurn = turnAction.ReadValue<Vector3>();
-        Vector3 rotation = Vector3.up * turnAngle * rawTurn.x * Time.deltaTime;
+        float rawTurn = turnAction.ReadValue<float>();
+        Vector3 rotation = Vector3.up * turnAngle * rawTurn * Time.deltaTime;
         if (localVelocity.z >= 0)
         {
             transform.localEulerAngles += rotation;
@@ -63,8 +61,9 @@ public class DriveableCar : MonoBehaviour
             transform.localEulerAngles -= rotation;
         }
 
-        Vector3 rawMove = moveAction.ReadValue<Vector3>() * maxSpeed;
-        rigidBody.AddForce(transform.rotation * Vector3.forward * rawMove.z);
+        float rawMove = moveAction.ReadValue<float>() * maxSpeed;
+        Debug.Log($"{rawTurn} {rawMove}");
+        rigidBody.AddForce(new Vector3(0,0,rawMove) * Time.deltaTime, ForceMode.Acceleration);
     }
     private void Gears()
     {
