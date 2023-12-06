@@ -19,6 +19,7 @@ public class DriveableCar : MonoBehaviour
 
     [Range(1, 6)]
     [SerializeField] private int gear;
+    [SerializeField] private float modifier;
 
     private void Start()
     {
@@ -35,6 +36,8 @@ public class DriveableCar : MonoBehaviour
         inputActions.Player.Enable();
         shiftUp = inputActions.Player.ShiftUp;
         shiftDown = inputActions.Player.ShiftDown;
+
+        
     }
 
     private void Update()
@@ -43,6 +46,8 @@ public class DriveableCar : MonoBehaviour
         Gears();
         currentSpeed =  Mathf.Round(rigidBody.velocity.magnitude);
         CheckSpeed();
+        shiftUp.started += ShiftUp;
+        shiftDown.started += ShiftDown;
     }
 
     public void Drive()
@@ -56,14 +61,16 @@ public class DriveableCar : MonoBehaviour
         {
             transform.localEulerAngles += rotation;
         }
-        else if (localVelocity.z <= 0)
+        else if (localVelocity.z < 0)
         {
             transform.localEulerAngles -= rotation;
         }
 
+
         float rawMove = moveAction.ReadValue<float>() * maxSpeed;
         Debug.Log($"{rawTurn} {rawMove}");
-        rigidBody.AddForce(new Vector3(0,0,rawMove) * Time.deltaTime, ForceMode.Acceleration);
+        rigidBody.AddForce(transform.forward * rawMove * Time.deltaTime, ForceMode.Acceleration);
+        //rigidBody.velocity = new Vector3(0, 0, rawMove);
     }
     private void Gears()
     {
@@ -96,6 +103,7 @@ public class DriveableCar : MonoBehaviour
         {
             gear = 6;
         }
+        maxSpeed = maxSpeed * modifier;
     }
     private void CheckSpeed()
     {

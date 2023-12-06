@@ -618,7 +618,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &867410348
 MeshRenderer:
@@ -816,7 +816,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1391121748
 MeshRenderer:
@@ -913,7 +913,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1521284499
 MeshRenderer:
@@ -1010,7 +1010,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1591036788
 MeshRenderer:
@@ -1182,6 +1182,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3174961278044540937, guid: ef6bc569892ec684b9715c39923fd06b, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3174961278044540937, guid: ef6bc569892ec684b9715c39923fd06b, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3174961278044540937, guid: ef6bc569892ec684b9715c39923fd06b, type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3754872977698862709, guid: ef6bc569892ec684b9715c39923fd06b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.9
@@ -1233,6 +1245,10 @@ PrefabInstance:
     - target: {fileID: 8035508545132523219, guid: ef6bc569892ec684b9715c39923fd06b, type: 3}
       propertyPath: gear
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035508545132523219, guid: ef6bc569892ec684b9715c39923fd06b, type: 3}
+      propertyPath: modifier
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef6bc569892ec684b9715c39923fd06b, type: 3}
