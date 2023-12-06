@@ -19,6 +19,7 @@ public class DriveableCar : MonoBehaviour
 
     [Range(1, 6)]
     [SerializeField] private int gear;
+    [SerializeField] private float modifier;
 
     private void Start()
     {
@@ -35,6 +36,8 @@ public class DriveableCar : MonoBehaviour
         inputActions.Player.Enable();
         shiftUp = inputActions.Player.ShiftUp;
         shiftDown = inputActions.Player.ShiftDown;
+
+        
     }
 
     private void Update()
@@ -43,6 +46,8 @@ public class DriveableCar : MonoBehaviour
         Gears();
         currentSpeed =  Mathf.Round(rigidBody.velocity.magnitude);
         CheckSpeed();
+        shiftUp.started += ShiftUp;
+        shiftDown.started += ShiftDown;
     }
 
     public void Drive()
@@ -50,21 +55,22 @@ public class DriveableCar : MonoBehaviour
         //adds velocity to the vehicle and allows it to turn.
         Vector3 localVelocity = transform.InverseTransformDirection(rigidBody.velocity);
 
-        localVelocity = localVelocity.normalized * maxSpeed;
-
-        Vector3 rawTurn = turnAction.ReadValue<Vector3>();
-        Vector3 rotation = Vector3.up * turnAngle * rawTurn.x * Time.deltaTime;
+        float rawTurn = turnAction.ReadValue<float>();
+        Vector3 rotation = Vector3.up * turnAngle * rawTurn * Time.deltaTime;
         if (localVelocity.z >= 0)
         {
             transform.localEulerAngles += rotation;
         }
-        else if (localVelocity.z <= 0)
+        else if (localVelocity.z < 0)
         {
             transform.localEulerAngles -= rotation;
         }
 
-        Vector3 rawMove = moveAction.ReadValue<Vector3>() * maxSpeed;
-        rigidBody.AddForce(transform.rotation * Vector3.forward * rawMove.z);
+
+        float rawMove = moveAction.ReadValue<float>() * maxSpeed;
+        Debug.Log($"{rawTurn} {rawMove}");
+        rigidBody.AddForce(transform.forward * rawMove * Time.deltaTime, ForceMode.Acceleration);
+        //rigidBody.velocity = new Vector3(0, 0, rawMove);
     }
     private void Gears()
     {
@@ -97,6 +103,7 @@ public class DriveableCar : MonoBehaviour
         {
             gear = 6;
         }
+        maxSpeed = maxSpeed * modifier;
     }
     private void CheckSpeed()
     {

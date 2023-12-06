@@ -31,7 +31,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""name"": ""Driving"",
                     ""type"": ""Value"",
                     ""id"": ""d297aba4-8280-4066-b8de-19d1ad2220bc"",
-                    ""expectedControlType"": ""Vector3"",
+                    ""expectedControlType"": ""Analog"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -58,7 +58,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""name"": ""Stearing"",
                     ""type"": ""Value"",
                     ""id"": ""80d61b0a-c995-4085-8e38-a6a084cdf4d5"",
-                    ""expectedControlType"": ""Vector3"",
+                    ""expectedControlType"": ""Analog"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -106,9 +106,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""3D Vector"",
+                    ""name"": ""1D Axis"",
                     ""id"": ""a227be58-dff1-429b-877f-5989450d1f3f"",
-                    ""path"": ""3DVector"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -117,7 +117,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""forward"",
+                    ""name"": ""positive"",
                     ""id"": ""50f37935-1a33-42c2-988a-d8fef6bc781f"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
@@ -128,7 +128,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""backward"",
+                    ""name"": ""negative"",
                     ""id"": ""927ae67c-6dee-4a5c-b822-5932bc0bb120"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
@@ -139,9 +139,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""3D Vector"",
+                    ""name"": ""1D Axis"",
                     ""id"": ""308e431d-7e38-4aa1-8ff4-136ce619ed45"",
-                    ""path"": ""3DVector"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -150,7 +150,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""left"",
+                    ""name"": ""negative"",
                     ""id"": ""5624f875-f12a-418d-b577-6d9d1b2f773f"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
@@ -161,7 +161,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
+                    ""name"": ""positive"",
                     ""id"": ""e59a1df6-46f5-4768-8acd-742f7a0e403b"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
