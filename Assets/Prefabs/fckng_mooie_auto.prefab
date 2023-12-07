@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 5171272415226330907}
   - component: {fileID: 1817047416551123775}
   - component: {fileID: 5245110934397202407}
-  - component: {fileID: 1006769730}
   m_Layer: 0
   m_Name: pCylinder18
   m_TagString: Untagged
@@ -168,19 +167,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1006769730
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1619549563903663497}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.006123649
-  m_Center: {x: 0.0000009497162, y: -0.0000000037252903, z: 0}
 --- !u!1 &2620493211593253429
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +178,6 @@ GameObject:
   - component: {fileID: 7503000760631292226}
   - component: {fileID: 27213269215761227}
   - component: {fileID: 4804878231354442614}
-  - component: {fileID: 938666044}
   m_Layer: 0
   m_Name: pCylinder20
   m_TagString: Untagged
@@ -265,19 +250,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &938666044
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2620493211593253429}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.006123649
-  m_Center: {x: 0.0000000030267984, y: -0.0000000037252903, z: -0.0000000011641532}
 --- !u!1 &4366680289698353622
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +261,6 @@ GameObject:
   - component: {fileID: 5286399350467549033}
   - component: {fileID: 7194697801000083388}
   - component: {fileID: 8630088543058978007}
-  - component: {fileID: 1246277869}
   m_Layer: 0
   m_Name: pCylinder22
   m_TagString: Untagged
@@ -362,19 +333,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1246277869
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4366680289698353622}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.006123649
-  m_Center: {x: 0.0000009406358, y: -0.0000000037252903, z: 0}
 --- !u!1 &5756986105160833096
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +344,6 @@ GameObject:
   - component: {fileID: 8910171684506209297}
   - component: {fileID: 176859510999891636}
   - component: {fileID: 3631267946966624783}
-  - component: {fileID: 1519314714}
   m_Layer: 0
   m_Name: pCylinder25
   m_TagString: Untagged
@@ -459,19 +416,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1519314714
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5756986105160833096}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.006123649
-  m_Center: {x: -0.000000024447218, y: -0.0000000037252903, z: 6.9849193e-10}
 --- !u!1 &8257705081646408645
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,8 +516,8 @@ Rigidbody:
   m_GameObject: {fileID: 8257705081646408645}
   serializedVersion: 2
   m_Mass: 100
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 1
+  m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -590,8 +534,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0468552, y: 0.017359221, z: 0.08607532}
-  m_Center: {x: 0.000015583038, y: 0.0067924326, z: 0}
+  m_Size: {x: 0.0468552, y: 0.030717544, z: 0.08607532}
+  m_Center: {x: 0.000015583038, y: 0.00011326313, z: 0}
 --- !u!114 &237022058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,7 +548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3754c654d872d4844b758cb2f6083368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidBody: {fileID: 0}
+  rigidBody: {fileID: 237022056}
   currentSpeed: 0
   maxSpeed: 2
   turnAngle: 50
