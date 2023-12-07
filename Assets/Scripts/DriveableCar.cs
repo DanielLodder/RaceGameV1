@@ -36,8 +36,6 @@ public class DriveableCar : MonoBehaviour
         inputActions.Player.Enable();
         shiftUp = inputActions.Player.ShiftUp;
         shiftDown = inputActions.Player.ShiftDown;
-
-        
     }
 
     private void Update()
@@ -46,8 +44,6 @@ public class DriveableCar : MonoBehaviour
         Gears();
         currentSpeed =  Mathf.Round(rigidBody.velocity.magnitude);
         CheckSpeed();
-        shiftUp.started += ShiftUp;
-        shiftDown.started += ShiftDown;
     }
 
     public void Drive()
