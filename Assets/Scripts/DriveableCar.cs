@@ -61,12 +61,12 @@ public class DriveableCar : MonoBehaviour
         {
             transform.localEulerAngles -= rotation;
         }
-
+        
 
         float rawMove = moveAction.ReadValue<float>() * maxSpeed;
         Debug.Log($"{rawTurn} {rawMove}");
         rigidBody.AddForce(transform.forward * rawMove * Time.deltaTime, ForceMode.Acceleration);
-        //rigidBody.velocity = new Vector3(0, 0, rawMove);
+        Debug.Log(rawMove);
     }
     private void Gears()
     {

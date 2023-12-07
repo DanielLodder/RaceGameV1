@@ -85,39 +85,6 @@
                 },
                 {
                     "name": "1D Axis",
-                    "id": "a227be58-dff1-429b-877f-5989450d1f3f",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Driving",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "positive",
-                    "id": "50f37935-1a33-42c2-988a-d8fef6bc781f",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Driving",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "negative",
-                    "id": "927ae67c-6dee-4a5c-b822-5932bc0bb120",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Driving",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "1D Axis",
                     "id": "308e431d-7e38-4aa1-8ff4-136ce619ed45",
                     "path": "1DAxis",
                     "interactions": "",
@@ -128,7 +95,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
+                    "name": "positive",
                     "id": "5624f875-f12a-418d-b577-6d9d1b2f773f",
                     "path": "<Keyboard>/a",
                     "interactions": "",
@@ -139,7 +106,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "positive",
+                    "name": "negative",
                     "id": "e59a1df6-46f5-4768-8acd-742f7a0e403b",
                     "path": "<Keyboard>/d",
                     "interactions": "",
@@ -170,6 +137,39 @@
                     "action": "ShiftDown",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "a227be58-dff1-429b-877f-5989450d1f3f",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Driving",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "50f37935-1a33-42c2-988a-d8fef6bc781f",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Driving",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "927ae67c-6dee-4a5c-b822-5932bc0bb120",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Driving",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
