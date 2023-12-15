@@ -42,7 +42,6 @@ public class DriveableCar : MonoBehaviour
     {
         Drive();
         Gears();
-        currentSpeed =  Mathf.Round(rigidBody.velocity.magnitude);
         CheckSpeed();
     }
 
@@ -103,9 +102,10 @@ public class DriveableCar : MonoBehaviour
     }
     private void CheckSpeed()
     {
-        if (currentSpeed >= maxSpeed)
+        currentSpeed = Mathf.Round(rigidBody.velocity.magnitude);
+        if (currentSpeed >= maxSpeed / modifier * 10)
         {
-            currentSpeed = maxSpeed;
+            currentSpeed = maxSpeed / modifier * 10;
         }
     }
     //the inputs for the gear shifts.

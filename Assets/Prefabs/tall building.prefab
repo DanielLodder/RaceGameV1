@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7740979703435714354}
   - component: {fileID: 6684089049369825431}
   - component: {fileID: 8873869014906217565}
+  - component: {fileID: 522881183301099147}
   m_Layer: 0
   m_Name: tall building
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &522881183301099147
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6928414924082972040}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14326435, y: 0.3082744, z: 0.12133974}
+  m_Center: {x: -0.0000000037252903, y: 0, z: 0}
