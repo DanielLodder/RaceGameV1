@@ -5,21 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class LapManager : MonoBehaviour
 {
-    [SerializeField] private float checkpointNumber = 0;
-    [SerializeField] private float maxCheckpointNumber = 0;
-    [SerializeField] private float lapNumber = 0;
-    [SerializeField] private float maxLapNumber = 0;
+    public int checkpointNumber = 0;
+    public int maxCheckpointNumber = 0;
+    [SerializeField] private int lapNumber = 0;
+    [SerializeField] private int maxLapNumber = 0;
     [SerializeField] public bool Hasfinished = false;
-    [SerializeField] private GameObject lapCheck;
-    [SerializeField] private GameObject Player;
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] private BoxCollider lapCheck;
+    [SerializeField] private BoxCollider Player;
+    [SerializeField] private GameObject[] checkpoints;
+
+    private void Start()
     {
-        if (CompareTag("Player"))
-        {
-            checkpointNumber++;
-            Debug.Log("checkpoint" + checkpointNumber);
-        }
-        if (checkpointNumber == maxCheckpointNumber && lapCheck.transform.position == Player.transform.position)
+        maxCheckpointNumber = checkpoints.Length;
+    }
+    private void Update()
+    {
+        
+        if (checkpointNumber >= maxCheckpointNumber && lapCheck)
         {
             lapNumber++;
         }
