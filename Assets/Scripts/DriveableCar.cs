@@ -20,6 +20,8 @@ public class DriveableCar : MonoBehaviour
     [Range(1, 6)]
     [SerializeField] private int gear;
     [SerializeField] private float modifier;
+    public bool canShiftUp;
+    public bool canShiftDown;
 
     private void Start()
     {
@@ -40,8 +42,8 @@ public class DriveableCar : MonoBehaviour
 
     private void Update()
     {
-        Drive();
         Gears();
+        Drive();
         CheckSpeed();
     }
 
@@ -71,6 +73,28 @@ public class DriveableCar : MonoBehaviour
     }
     private void Gears()
     {
+        if (gear == 1)
+        {
+            canShiftDown = false;
+            shiftDown.Disable();
+        }
+        else
+        {
+            canShiftDown = true;
+            shiftDown.Enable();
+        }
+
+        if (gear == 6)
+        {
+            canShiftUp = false;
+            shiftUp.Disable();
+        }
+        else
+        {
+            canShiftUp = true;
+            shiftUp.Enable();
+        }
+
         switch (gear)
         {
             case 1:
@@ -92,15 +116,8 @@ public class DriveableCar : MonoBehaviour
                 maxSpeed = 4.5f;
                 break;
         }
-        if (gear == 0)
-        {
-            gear = 1;
-        }
-        if (gear == 7)
-        {
-            gear = 6;
-        }
         maxSpeed = maxSpeed * modifier;
+
     }
     private void CheckSpeed()
     {
